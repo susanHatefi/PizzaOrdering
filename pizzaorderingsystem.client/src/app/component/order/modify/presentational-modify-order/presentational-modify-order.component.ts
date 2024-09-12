@@ -159,11 +159,14 @@ export class PresentationalModifyOrderComponent implements AfterViewInit {
         hasDiscount: false,
       });
     }
-    const orderItems = this.pizzaOrders(sizeName).value?.map((val: any) => ({
-      size: val.size,
-      toppings: val.toppings.sort(),
-      quantity: val.quantity,
-    }));
+    const orderItems = this.pizzaOrders(sizeName).value?.map((val: any) => {
+      const freezedToppings = Object.freeze(val?.toppings);
+      return {
+        size: val.size,
+        toppings: [...freezedToppings].sort(),
+        quantity: val.quantity,
+      };
+    });
     const mergedOrderItems = this.getGroupingItemOrders(orderItems);
     mergedOrderItems?.map((item: OrderModel) => {
       if (item.toppings) {
@@ -175,6 +178,7 @@ export class PresentationalModifyOrderComponent implements AfterViewInit {
           this.sizePrices[item.size]
         );
         let totalItemPrice = itemPricesSum;
+        let machedPromotion: PromotionModel | undefined;
         if (this.promotions) {
           for (let promotion of this.promotions) {
             if (promotion.size !== item.size) continue;
@@ -190,40 +194,47 @@ export class PresentationalModifyOrderComponent implements AfterViewInit {
                   }, item.toppings.length);
               }
               if (promotion.totalToppings === totalToppingNo) {
-                hasDiscount = hasDiscount || !!promotion.discount;
-                offers = promotion.name;
                 if (promotion.quantity) {
                   if (itemQuantity >= promotion.quantity) {
-                    const numberOfOffersMatched = Math.floor(
-                      itemQuantity / promotion.quantity
-                    );
-                    totalItemPrice =
-                      (promotion.price
-                        ? promotion.price
-                        : ((100 - promotion.discount) * itemPricesSum) / 100) *
-                      numberOfOffersMatched;
-                    const numberOfItemswithoutOffers =
-                      itemQuantity - numberOfOffersMatched * promotion.quantity;
-                    totalItemPrice =
-                      totalItemPrice +
-                      numberOfItemswithoutOffers * itemPricesSum;
-                  } else {
-                    offers = '';
-                    hasDiscount = false;
+                    machedPromotion = promotion;
+                    break;
                   }
                 } else {
-                  totalItemPrice =
-                    (promotion.price
-                      ? promotion.price
-                      : ((100 - promotion.discount) * itemPricesSum) / 100) *
-                    itemQuantity;
+                  machedPromotion = promotion;
+                  break;
                 }
-                break;
-              } else {
-                totalItemPrice = itemPricesSum * itemQuantity;
               }
             }
           }
+        }
+
+        if (machedPromotion) {
+          hasDiscount = hasDiscount || !!machedPromotion.discount;
+          offers = machedPromotion.name;
+          if (machedPromotion.quantity) {
+            const numberOfOffersMatched = Math.floor(
+              itemQuantity / machedPromotion?.quantity
+            );
+            totalItemPrice =
+              (machedPromotion.price
+                ? machedPromotion.price
+                : ((100 - machedPromotion.discount) * itemPricesSum) / 100) *
+              numberOfOffersMatched;
+            const numberOfItemswithoutOffers =
+              itemQuantity - numberOfOffersMatched * machedPromotion.quantity;
+            totalItemPrice =
+              totalItemPrice + numberOfItemswithoutOffers * itemPricesSum;
+          } else {
+            totalItemPrice =
+              (machedPromotion.price
+                ? machedPromotion.price
+                : ((100 - machedPromotion.discount) * itemPricesSum) / 100) *
+              itemQuantity;
+          }
+        } else {
+          hasDiscount = false;
+          offers = '';
+          totalItemPrice = itemPricesSum * itemQuantity;
         }
 
         if (this.orderItemsPrice.has(item.size)) {

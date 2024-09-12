@@ -39,7 +39,7 @@
                                          <div class="col" [formGroupName]="i" >
                                              
                                              <div class="row cell cellHeader d-flex justify-content-center quantity">
-                                                <input type="number" min="1" max="50" placeholder="1" class="form-control p-0 text-center" formControlName="quantity" (change)="onCaculatePrice(size.name)" />
+                                                <input type="number" placeholder="1" class="form-control p-0 text-center" formControlName="quantity" (change)="onCaculatePrice(size.name)" />
                                             </div>
                                              <div class="row" formArrayName="vegToppings">
                                                  <div class="col">
