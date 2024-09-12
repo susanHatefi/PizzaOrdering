@@ -1,0 +1,122 @@
+<div class="container">
+    <div class="row header">
+        <div class="col-2 border border-black border-bottom-0">Toppings</div>
+        <div class="col border border-black text-center">Pizza Size</div>
+    </div>
+    <div class="row">
+        <div class="col-2 left-column">
+            <div class="row cell cellEmpty border border-black border-top-0"></div> <!-- empty -->
+            @if(vegToppings && vegToppings.length){
+                <div class="row cell cellHeader">Veg Toppings</div>
+                @for(veg of vegToppings;track veg.name){
+                    <div class="row cell border border-black">{{veg.name | attachPriceToName : veg.price:2 }}</div>
+                }
+            }
+            @if(nonVegToppings && nonVegToppings.length){
+                <div class="row cell cellHeader">Non Veg Toppings</div>
+            @for(nonVeg of nonVegToppings;track nonVeg.name){
+                <div class="row cell border border-black">{{nonVeg.name | attachPriceToName: nonVeg.price : 2}}</div>
+            }
+        }
+
+        <div class="row cell cellHeader bg-primary">Total</div>
+        <div class="row cell border border-black">Offer</div>
+        <div class="row cell border border-black"></div>
+    </div>
+    @if(form){
+        <form class="col" [formGroup]="form">
+            <div  class="row" >
+                @for( size of pizzaSizes;track size.name){
+       
+                    <div class="col sizeColumn" [formArrayName]="size.name">
+                       <div class="row cell cellHeader border  border-black ">{{size.name | attachPriceToName:size.price}}</div>
+                       <div class="row">
+                        <div class="col columnData">
+                            @if(vegToppings && vegToppings.length){
+                                <div class="row cell cellEmpty"></div>
+                                <div class="row border border-top-0 border-bottom-0 border-black" >
+                                     @for(order of pizzaOrders(size.name).value;track order.size; let i=$index){
+                                         <div class="col" [formGroupName]="i" >
+                                             
+                                             <div class="row cell cellHeader d-flex justify-content-center quantity">
+                                                <input type="number" min="1" max="50" placeholder="1" class="form-control p-0 text-center" formControlName="quantity" (change)="onCaculatePrice(size.name)" />
+                                            </div>
+                                             <div class="row" formArrayName="vegToppings">
+                                                 <div class="col">
+                                                     @for(veg of order.vegToppings;track veg.name;let j=$index){
+                                                              <div class="row cell d-flex justify-content-center" [formGroupName]="j" > 
+                                                              <input class="form-check-input chbx-control" type="checkbox" [ngClass]="{'checked':veg.isChecked}" formControlName="isChecked" (change)="onToppingChange('Veg',size.name,i,j)">
+                                                          </div>
+                                                      }
+         
+                                                 </div>
+                                             </div>
+                                      </div>
+                                         
+                                     }
+                                 </div>
+                            }
+            
+                            @if(nonVegToppings && nonVegToppings.length){
+                                <div class="row cell cellEmpty"></div> <!-- empty For Non Veg Title-->
+                                <div class="row border border-top-0 border-bottom-0 border-black">
+                                 @for(order of pizzaOrders(size.name).value;track order.size; let j=$index){
+                                     <div class="col" [formGroupName]="j">
+                                         <div class="row" formArrayName="nonVegToppings">
+                                             <div class="col">
+                                         @for(nonVeg of order.nonVegToppings;track nonVeg.name; let k=$index){
+                                             <div class="row cell  border-black d-flex justify-content-center" [formGroupName]="k"> <input class="form-check-input chbx-control" type="checkbox" [ngClass]="{'checked':nonVeg.isChecked}" formControlName="isChecked" (change)="onToppingChange('NonVeg',size.name,j,k)"></div>
+                                         }
+                                         </div>
+                                         </div>
+         
+         
+                                     </div>
+         
+                                 }
+                                </div>
+                            }
+
+                            <div class="row bg-primary cell cellEmpty"></div> <!-- empty For Total-->
+            
+                            <div class="row cell border border-black d-flex justify-content-center">
+                             <ng-container *ngIf="orderItemsPrice.get(size.name) as info">
+                                 @for(offer of info?.offers;track offer){
+                                     <div class="col px-1 d-flex" >
+                                         {{offer + "-"}} <img src="assets/images/checkbox.png" class="offerIcon"/>
+                                     </div>
+                                 }
+     
+                             </ng-container>
+                            </div>
+                            <div class="row cell border border-black">
+                             <ng-container *ngIf="orderItemsPrice.get(size.name) as price">
+                                 <div class="col">
+                                     @if(price.hasDiscount){
+                                         <div class="row text-center">
+                                             <span class="originalColPrice">{{price.originalPrice}}</span>
+                                         </div>
+                                     }
+                                     <div class="row text-center">
+                                         <span class="totalColPrice">{{price.totalPrice}}</span>
+                                     </div>
+                                 </div>
+                                 
+                             </ng-container>
+     
+                            </div>
+                        </div>
+                       </div>
+                    </div>
+    
+                }
+    
+            </div>
+        </form>
+
+    }
+    
+
+</div>
+
+</div>

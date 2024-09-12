@@ -1,0 +1,56 @@
+$primary: #deeaf6;
+$danger: #ff4136;
+
+$theme-colors: (
+  "primary": $primary,
+  "danger": $danger,
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "Roboto sans-serif";
+  src: url('./assets/fonts/Roboto-Regular.ttf') format("ttf"),
+  url('./assets/fonts/OpenSans-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src:url('./assets/fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2') format(woff2),
+   url('./assets/fonts/MaterialIcons-Regular.ttf') format('ttf'),
+  url('./assets/fonts/MaterialIconsRound-Regular.otf') format('otf'),
+  url('./assets/fonts/MaterialIconsOutlined-Regular.otf') format('otf'),
+}
+body,html{
+  height: 100%;
+  font-family: Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+}
+
+@media (min-width:320) {
+  body{
+    font-size:10px
+  }
+}
+
+@media (min-width:480px) {
+  body{
+    font-size:12px
+  }
+}
+
+@media (min-width:768px) {
+  body{
+    font-size:14px
+  }
+}

@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35208.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaOrderingSystem.Server", "PizzaOrderingSystem.Server\PizzaOrderingSystem.Server.csproj", "{5FDE1DAD-F160-4FA6-9ADF-F7889B71D814}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "pizzaorderingsystem.client", "pizzaorderingsystem.client\pizzaorderingsystem.client.esproj", "{E79D04FE-13B3-412B-9C14-32AB6939438C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaOrderingSystem.Domain", "PizzaOrderingSystem.Domain\PizzaOrderingSystem.Domain.csproj", "{38BDFB79-6694-4D1E-A3F7-5D8D38343E30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaOrderingSystem.Domain.Model", "PizzaOrderingSystem.Domain.Model\PizzaOrderingSystem.Domain.Model.csproj", "{08BA374A-D4B9-4D49-A5F4-DFD60D97DCAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaOrderingSystem.DataAccess.Model", "PizzaOrderingSystem.DataAccess.Model\PizzaOrderingSystem.DataAccess.Model.csproj", "{4B27B45E-1B77-478F-A27E-FD9836C0D618}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaOrderingSystem.DataAccess", "PizzaOrderingSystem.DataAccess\PizzaOrderingSystem.DataAccess.csproj", "{C4AF5280-E33F-4071-A782-625DDC9801DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FDE1DAD-F160-4FA6-9ADF-F7889B71D814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FDE1DAD-F160-4FA6-9ADF-F7889B71D814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FDE1DAD-F160-4FA6-9ADF-F7889B71D814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FDE1DAD-F160-4FA6-9ADF-F7889B71D814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E79D04FE-13B3-412B-9C14-32AB6939438C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E79D04FE-13B3-412B-9C14-32AB6939438C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E79D04FE-13B3-412B-9C14-32AB6939438C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E79D04FE-13B3-412B-9C14-32AB6939438C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E79D04FE-13B3-412B-9C14-32AB6939438C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E79D04FE-13B3-412B-9C14-32AB6939438C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{38BDFB79-6694-4D1E-A3F7-5D8D38343E30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38BDFB79-6694-4D1E-A3F7-5D8D38343E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38BDFB79-6694-4D1E-A3F7-5D8D38343E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38BDFB79-6694-4D1E-A3F7-5D8D38343E30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08BA374A-D4B9-4D49-A5F4-DFD60D97DCAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08BA374A-D4B9-4D49-A5F4-DFD60D97DCAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08BA374A-D4B9-4D49-A5F4-DFD60D97DCAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08BA374A-D4B9-4D49-A5F4-DFD60D97DCAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B27B45E-1B77-478F-A27E-FD9836C0D618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B27B45E-1B77-478F-A27E-FD9836C0D618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B27B45E-1B77-478F-A27E-FD9836C0D618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B27B45E-1B77-478F-A27E-FD9836C0D618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4AF5280-E33F-4071-A782-625DDC9801DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4AF5280-E33F-4071-A782-625DDC9801DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4AF5280-E33F-4071-A782-625DDC9801DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4AF5280-E33F-4071-A782-625DDC9801DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE7F422A-A540-4FEA-A18A-EA2CBE0AF4CA}
+	EndGlobalSection
+EndGlobal

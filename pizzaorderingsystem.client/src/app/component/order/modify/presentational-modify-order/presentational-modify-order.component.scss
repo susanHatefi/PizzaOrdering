@@ -1,0 +1,86 @@
+:host{
+  width: 100%;
+  height: 100%;
+}
+
+.sizeColumn{
+  .columnData{
+    position: relative;
+    top: -2.2143em;
+    .quantity{
+      .form-control{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        width: 2em;
+        height: 1.35em;
+        -moz-appearance: textfield;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+    }
+    .originalColPrice{
+      text-decoration: line-through;
+    }
+    .offerIcon{
+      width: 1.5em;
+      height: 1.5em;
+      margin-left: .1em
+      ;
+    }
+  }
+}
+
+
+.cell {
+  position: relative;
+  min-height: 4em;
+  padding: 0.3em 0.5em;
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+  .sizeTitle {
+    padding: 0;
+    margin: 0;
+    &:focus-visible {
+      border: none;
+      outline: none;
+    }
+  }
+  &.cellHeader{
+    min-height: 2em;
+  }
+  &.cellEmpty{
+    min-height: 2.2em;
+  }
+}
+
+.chbx-control {
+  top: -6px;
+  outline: 5px solid #fff;
+  border-radius: 100%;
+  appearance: initial;
+  border: solid 1px gray;
+  width: 1.5em;
+  height: 1.5em;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  &.checked {
+    border-color: #294320;
+    background: transparent;
+    &::after {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: -1px;
+      right: 0;
+      bottom: 0;
+      background-image: url("../../../../../assets/images/checkbox.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 113%;
+      height: 120%;
+    }
+  }
+}

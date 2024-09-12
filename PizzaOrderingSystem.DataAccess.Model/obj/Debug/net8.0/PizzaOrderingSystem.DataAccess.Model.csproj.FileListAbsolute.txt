@@ -1,0 +1,11 @@
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.DataAccess.Model\bin\Debug\net8.0\PizzaOrderingSystem.DataAccess.Model.deps.json
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.DataAccess.Model\bin\Debug\net8.0\PizzaOrderingSystem.DataAccess.Model.dll
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.DataAccess.Model\bin\Debug\net8.0\PizzaOrderingSystem.DataAccess.Model.pdb
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.DataAccess.Model\obj\Debug\net8.0\PizzaOrderingSystem.DataAccess.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.DataAccess.Model\obj\Debug\net8.0\PizzaOrderingSystem.DataAccess.Model.AssemblyInfoInputs.cache
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.DataAccess.Model\obj\Debug\net8.0\PizzaOrderingSystem.DataAccess.Model.AssemblyInfo.cs
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.DataAccess.Model\obj\Debug\net8.0\PizzaOrderingSystem.DataAccess.Model.csproj.CoreCompileInputs.cache
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.DataAccess.Model\obj\Debug\net8.0\PizzaOrderingSystem.DataAccess.Model.dll
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.DataAccess.Model\obj\Debug\net8.0\refint\PizzaOrderingSystem.DataAccess.Model.dll
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.DataAccess.Model\obj\Debug\net8.0\PizzaOrderingSystem.DataAccess.Model.pdb
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.DataAccess.Model\obj\Debug\net8.0\ref\PizzaOrderingSystem.DataAccess.Model.dll

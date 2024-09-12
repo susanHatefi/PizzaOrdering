@@ -1,0 +1,3 @@
+C:\Users\s.hatefimonfared\source\repos\PizzaOrderingSystem\pizzaorderingsystem.client\obj\Debug\pizzaorderingsystem.client.esproj.CoreCompileInputs.cache
+F:\Personal\PizzaOrderingSystem\pizzaorderingsystem.client\obj\Debug\pizzaorderingsystem.client.esproj.CoreCompileInputs.cache
+D:\Projects\sample\PizzaOrderingSystem\pizzaorderingsystem.client\obj\Debug\pizzaorderingsystem.client.esproj.CoreCompileInputs.cache

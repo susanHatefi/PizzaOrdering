@@ -1,0 +1,57 @@
+﻿.pizzaOrders{
+    height: 100vh;
+    overflow: hidden;
+    .leftside{
+        // background-color: #6495ED;
+        // background-color: #00BFFF;
+        background-color: #4169E1;
+        padding: 1em 0;
+        width: 10%;
+        .nav{
+            margin-left: 1em;
+            .nav-item{
+                color: #fff;
+                font-weight: 600;
+                position: relative;
+                &.active{
+                    background-color: #fff;
+                    border-top-left-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                    
+                    &::after{
+                        content: "";
+                        width: 30px;
+                        height: 35px;
+                        background-color: transparent;
+                        position: absolute;
+                        bottom: -27px;
+                        right: -8px;
+                        border-right: 8px solid #fff;
+                        border-top-right-radius: 70%;
+                        border-top: 8px solid #fff;
+                    }
+                    &::before{
+                        content: "";
+                        width: 30px;
+                        height: 35px;
+                        background-color: transparent;
+                        position: absolute;
+                        top: -27px;
+                        right: -8px;
+                        border-right: 8px solid #fff;
+                        border-bottom-right-radius: 70%;
+                        border-bottom: 8px solid #fff;
+                    }
+                    .nav-link{
+                    color:#4169E1 ;
+                    padding-left: 1.5em;
+                    }
+                }
+            }
+        }
+    }
+    .content{
+        width: 90%;
+        overflow-y: auto;
+    }
+}

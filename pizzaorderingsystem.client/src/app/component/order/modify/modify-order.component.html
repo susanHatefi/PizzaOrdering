@@ -1,0 +1,10 @@
+    <ng-container *ngIf="$data|async as data">
+        <app-presentational-modify-order [pizzaSizes]="data.pizzaSize" [vegToppings]="data.vegToppings" 
+        [nonVegToppings]="data.nonVegToppings" [promotions]="data.promotion" [form]="form" 
+         (bindform)="buildForm($event)" 
+         (saveFormDataInState)="keepOrderItemsInState($event)"
+         [formData]="formData"
+         />
+    </ng-container>
+    
+

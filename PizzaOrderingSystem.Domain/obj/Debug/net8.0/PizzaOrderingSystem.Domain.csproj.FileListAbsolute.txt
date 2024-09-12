@@ -1,0 +1,17 @@
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\bin\Debug\net8.0\PizzaOrderingSystem.Domain.deps.json
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\bin\Debug\net8.0\PizzaOrderingSystem.Domain.dll
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\bin\Debug\net8.0\PizzaOrderingSystem.Domain.pdb
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\bin\Debug\net8.0\PizzaOrderingSystem.DataAccess.Model.dll
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\bin\Debug\net8.0\PizzaOrderingSystem.Domain.Model.dll
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\bin\Debug\net8.0\PizzaOrderingSystem.DataAccess.Model.pdb
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\bin\Debug\net8.0\PizzaOrderingSystem.Domain.Model.pdb
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\obj\Debug\net8.0\PizzaOrderingSystem.Domain.csproj.AssemblyReference.cache
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\obj\Debug\net8.0\PizzaOrderingSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\obj\Debug\net8.0\PizzaOrderingSystem.Domain.AssemblyInfoInputs.cache
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\obj\Debug\net8.0\PizzaOrderingSystem.Domain.AssemblyInfo.cs
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\obj\Debug\net8.0\PizzaOrderingSystem.Domain.csproj.CoreCompileInputs.cache
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\obj\Debug\net8.0\PizzaOrd.2B4C11E4.Up2Date
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\obj\Debug\net8.0\PizzaOrderingSystem.Domain.dll
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\obj\Debug\net8.0\refint\PizzaOrderingSystem.Domain.dll
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\obj\Debug\net8.0\PizzaOrderingSystem.Domain.pdb
+D:\Projects\sample\PizzaOrderingSystem\PizzaOrderingSystem.Domain\obj\Debug\net8.0\ref\PizzaOrderingSystem.Domain.dll

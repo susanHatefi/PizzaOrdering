@@ -1,0 +1,43 @@
+:host{
+    width: 100%;
+}
+
+@keyframes changeColor {
+     0%{
+        color: red;
+     }
+     25%{
+        color: orange;
+     }
+     50%{
+        color: rgb(6, 227, 6);
+     }
+     75%{
+        color: blue;
+     }
+     100%{
+color: rgb(236, 15, 52);
+     }
+}
+
+.welcomeContainer{
+    align-items: center;
+    .title{
+        color: red;
+        animation: changeColor infinite 5s 1ms forwards;;
+    }
+    .subTitleContainer{
+        text-align: center;
+            font-size: 50px;
+            background: linear-gradient(to left,
+                    violet,
+                    indigo,
+                    blue,
+                    green,
+                    yellow,
+                    orange,
+                    red);
+            -webkit-background-clip: text;
+            color: transparent;
+}
+}
