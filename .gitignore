@@ -1,1 +1,9 @@
+
+
+# .gitignore file
 .vs/
+
+
+node_modules/
+dist/
+.env
