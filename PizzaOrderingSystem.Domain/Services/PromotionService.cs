@@ -33,58 +33,5 @@ public class PromotionService : IPromotionService
         }
     }
 
-    public async Task<Model.Promotion?> GetOrderMatchedPromotion(Model.CreateOrder order)
-    {
-        try
-        {
-            var promotions = await GetAllPromotions();
-            foreach (var promotion in promotions)
-            {
-                if (promotion.Size.ToString() != order.PizzaSize) continue;
-                if(promotion.TotalToppings != 0)
-                {
-                    var orderToppingNo = order.Toppings.Count;
-                    if(promotion.TotalToppingsUnit != null)
-                    {
-                        foreach(var item in promotion.TotalToppingsUnit)
-                        {
-                            if (order.Toppings.Contains(item.ToppingName))
-                            {
-                                orderToppingNo = orderToppingNo - 1 + item.Unit;
-                            }
-                        }
-                    }
-                    if(orderToppingNo == promotion.TotalToppings)
-                    {
-                        if (promotion.Quantity > 1 && order.Quantity == promotion.Quantity)
-                        {
-                            return promotion;
-                        }
-                        else
-                        {
-                            return promotion;
-
-                        }
-
-                    }
-                    
-                }
-                else if(promotion.Quantity > 1 && order.Quantity == promotion.Quantity)
-                {
-                    return promotion;
-                }
-            }
-            return null;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, $"{nameof(GetOrderMatchedPromotion)}");
-            throw new Exception("There is a problem to find matched promotion for the order.", ex);
-        }
-
-
-    }
-
-
     
 }

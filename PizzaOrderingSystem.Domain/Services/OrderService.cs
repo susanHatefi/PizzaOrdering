@@ -38,7 +38,7 @@ public class OrderService : IOrderService
 
             foreach (var createOrderItem in mergedOrderItemsWithSameFeatures) {
                 var orderToppings = allToppings.Where(topping => createOrderItem.Toppings.Contains(topping.Name)).Select(topping => topping).ToList();
-                //var orderToppings = await _unitOfWork.Repository<Topping>().FindAsync(topping => createOrderItem.Toppings.Contains(topping.Name));
+              
                 var orderPizzaSize = allProducts.FirstOrDefault(pizza =>createOrderItem.PizzaSize.Equals(pizza.Size.ToString(),StringComparison.OrdinalIgnoreCase));
                 var matchedPromotion = await GetOrderMatchedPromotion(createOrderItem, allPromotions);
                 finalOrderItems.Add(
@@ -78,15 +78,14 @@ public class OrderService : IOrderService
         var totalPrice = orderPrice;
         if (promotion !=null)
         {
-            if(promotion.Quantity > 1)
+            var promotionPrice = (promotion.Price != 0
+                      ? promotion.Price
+                      : ((100 - (promotion.Discount ?? 0)) * orderPrice) / 100);
+            if (promotion.Quantity > 1)
             {
                 decimal quantity=order.Quantity / promotion.Quantity;
                 var numberOfItemsMatched = Math.Truncate(quantity);
-                totalPrice =
-                  (promotion.Price!=0
-                    ? promotion.Price
-                    : ((100 - (promotion.Discount??0)) * orderPrice) / 100) *
-                  numberOfItemsMatched;
+                totalPrice =promotionPrice * numberOfItemsMatched;
                 var numberOfItemswithoutOffers =
                   order.Quantity - (numberOfItemsMatched * promotion.Quantity);
                 totalPrice =
@@ -95,11 +94,7 @@ public class OrderService : IOrderService
             }
             else
             {
-                totalPrice =
-                    (promotion.Price !=0
-                      ? promotion.Price
-                      : ((100 - (promotion.Discount??0)) * orderPrice) / 100) *
-                    order.Quantity;
+                totalPrice =promotionPrice * order.Quantity;
 
             }
             return totalPrice;
