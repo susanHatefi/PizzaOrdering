@@ -7,13 +7,13 @@
         <div class="col-2 left-column">
             <div class="row cell cellEmpty border border-black border-top-0"></div> <!-- empty -->
             @if(vegToppings && vegToppings.length){
-                <div class="row cell cellHeader">Veg Toppings</div>
+                <div class="row cell cellHeader text-nowrap">Veg Toppings</div>
                 @for(veg of vegToppings;track veg.name){
                     <div class="row cell border border-black">{{veg.name | attachPriceToName : veg.price:2 }}</div>
                 }
             }
             @if(nonVegToppings && nonVegToppings.length){
-                <div class="row cell cellHeader">Non Veg Toppings</div>
+                <div class="row cell cellHeader text-nowrap">Non Veg Toppings</div>
             @for(nonVeg of nonVegToppings;track nonVeg.name){
                 <div class="row cell border border-black">{{nonVeg.name | attachPriceToName: nonVeg.price : 2}}</div>
             }
