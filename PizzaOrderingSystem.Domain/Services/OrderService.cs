@@ -13,51 +13,46 @@ public class OrderService : IOrderService
 
     private ILogger<OrderService> _logger;
     private IUnitOfWork _unitOfWork;
-    private IPromotionService _promotionService;
-    private IToppingService _toppingService;
-    private IProductService _pizzaSizeService;
-    public OrderService(IUnitOfWork unitOfWork,ILogger<OrderService> logger, IPromotionService promotionService, IToppingService toppingService,IProductService pizzaSizeService)
+    public OrderService(IUnitOfWork unitOfWork, ILogger<OrderService> logger)
     {
         _unitOfWork = unitOfWork;
         _logger = logger;
-        _promotionService= promotionService;
-        _toppingService= toppingService;
-        _pizzaSizeService= pizzaSizeService;
     }
 
     public async Task SaveOrders(IEnumerable<Model.CreateOrder> orders)
     {
         try
         {
-            var mergedOrderItemsWithSameFeatures= orders.GroupBy(order => string.Join(",", order.Toppings.OrderDescending())).Select(group => new Model.CreateOrder(group.First().PizzaSize, group.First().Toppings, (short)group.Sum(o => o.Quantity)));
+            var mergedOrderItemsWithSameFeatures = orders.GroupBy(order => string.Join(",", order.Toppings.OrderDescending())).Select(group => new Model.CreateOrder(group.First().PizzaSize, group.First().Toppings, (short)group.Sum(o => o.Quantity)));
 
             var allProducts = await _unitOfWork.Repository<Product>().GetAllAsync();
             var allToppings = await _unitOfWork.Repository<Topping>().GetAllAsync();
             var allPromotions = await _unitOfWork.Repository<Promotion>().GetAllAsync();
-            var finalOrderItems=new List<OrderItem>();
+            var finalOrderItems = new List<OrderItem>();
 
-            foreach (var createOrderItem in mergedOrderItemsWithSameFeatures) {
+            foreach (var createOrderItem in mergedOrderItemsWithSameFeatures)
+            {
                 var orderToppings = allToppings.Where(topping => createOrderItem.Toppings.Contains(topping.Name)).Select(topping => topping).ToList();
-              
-                var orderPizzaSize = allProducts.FirstOrDefault(pizza =>createOrderItem.PizzaSize.Equals(pizza.Size.ToString(),StringComparison.OrdinalIgnoreCase));
+
+                var orderPizzaSize = allProducts.FirstOrDefault(pizza => createOrderItem.PizzaSize.Equals(pizza.Size.ToString(), StringComparison.OrdinalIgnoreCase));
                 var matchedPromotion = await GetOrderMatchedPromotion(createOrderItem, allPromotions);
                 finalOrderItems.Add(
                         new OrderItem()
                         {
-                            Quantity= createOrderItem.Quantity,
-                            ProductId= orderPizzaSize.Id,
-                            PromotionId = matchedPromotion?.Id??null,
+                            Quantity = createOrderItem.Quantity,
+                            ProductId = orderPizzaSize.Id,
+                            PromotionId = matchedPromotion?.Id ?? null,
                             Toppings = orderToppings?.ToList(),
-                            TotalPrice = CalculateOrderItemTotalPrice(createOrderItem,orderPizzaSize.Price, orderToppings, matchedPromotion)
+                            TotalPrice = CalculateOrderItemTotalPrice(createOrderItem, orderPizzaSize.Price, orderToppings, matchedPromotion)
                         }
                     );
-                
+
             }
 
-            var newOrder=new Order()
+            var newOrder = new Order()
             {
                 OrderItems = finalOrderItems,
-                TotalPrice = finalOrderItems.Sum(order=>order.TotalPrice)
+                TotalPrice = finalOrderItems.Sum(order => order.TotalPrice)
             };
             await _unitOfWork.Repository<Order>().AddAsync(newOrder);
             await _unitOfWork.SaveChangesAsync();
@@ -71,36 +66,29 @@ public class OrderService : IOrderService
     }
 
 
-    private decimal CalculateOrderItemTotalPrice(Model.CreateOrder order,decimal pizzaPrice,IEnumerable<Topping> orderToppings, Promotion? promotion)
+    private decimal CalculateOrderItemTotalPrice(Model.CreateOrder order, decimal pizzaPrice, IEnumerable<Topping> orderToppings, Promotion? promotion)
     {
-        var toppingPrice=orderToppings.Sum(topping => topping.Price);
+        var toppingPrice = orderToppings.Sum(topping => topping.Price);
         var orderPrice = pizzaPrice + toppingPrice;
-        var totalPrice = orderPrice;
-        if (promotion !=null)
+        if (promotion == null)
         {
-            var promotionPrice = (promotion.Price != 0
+            return orderPrice * order.Quantity;
+        }
+        var promotionPrice = (promotion.Price != 0
                       ? promotion.Price
                       : ((100 - (promotion.Discount ?? 0)) * orderPrice) / 100);
-            if (promotion.Quantity > 1)
-            {
-                decimal quantity=order.Quantity / promotion.Quantity;
-                var numberOfItemsMatched = Math.Truncate(quantity);
-                totalPrice =promotionPrice * numberOfItemsMatched;
-                var numberOfItemswithoutOffers =
-                  order.Quantity - (numberOfItemsMatched * promotion.Quantity);
-                totalPrice =
-                  totalPrice +
-                  numberOfItemswithoutOffers * orderPrice;
-            }
-            else
-            {
-                totalPrice =promotionPrice * order.Quantity;
-
-            }
-            return totalPrice;
-
+        if (promotion.Quantity > 1)
+        {
+            decimal quantity = order.Quantity / promotion.Quantity;
+            var numberOfItemsMatched = Math.Truncate(quantity);
+            var totalPrice =  promotionPrice * numberOfItemsMatched;
+            var numberOfItemswithoutOffers =
+                order.Quantity - (numberOfItemsMatched * promotion.Quantity);
+            return totalPrice +
+                (numberOfItemswithoutOffers * orderPrice);
         }
-        return orderPrice * order.Quantity;
+        return promotionPrice * order.Quantity;
+
     }
 
     public async Task<Promotion?> GetOrderMatchedPromotion(Model.CreateOrder order, IEnumerable<Promotion> promotions)

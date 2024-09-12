@@ -37,22 +37,7 @@ public class ToppingService : IToppingService
         }
     }
 
-    
-    public async Task<IEnumerable<Model.Topping>> FindToppings(Expression<Func<Model.Topping,bool>> expression)
-    {
-        try
-        {
-            var toppings = await _repository.FindAsync(expression.ConvertToDataLayer<Model.Topping, Topping>());
-            var domainToppings = toppings?.Select(topping => topping.ToDomain<Topping, Model.Topping>());
-            return domainToppings;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, $"{nameof(FindToppings)}");
-            throw new Exception("There is a problem to find toppings.", ex);
-        }
-    }
-
+   
     public async Task<(IEnumerable<Model.Topping> VegTopping, IEnumerable<Model.Topping> NonVegTopping)> GetToppingsSeperatedByType()
     {
         try

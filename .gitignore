@@ -2,8 +2,8 @@
 
 # .gitignore file
 .vs/
-obj/
-bin/
+*/obj
+*/bin
 
 node_modules/
 dist/
